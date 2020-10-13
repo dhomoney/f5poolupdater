@@ -1,0 +1,44 @@
+F5 Pool Updater
+
+The F5 Pool Updater was built out of a work project that had me doing performance testing. I would frequently have to
+add a ton of servers to the pools and then tear it back down, rinse and repeat. This tool was built because having to do
+this manually in the GUI or the CLI was a slog and took forever. The secondary focus of this was to learn both Python
+and the F5 Python SDK. I hope you fine this useful.
+
+Usage:
+
+'python f5poolupdater.py <Action> <Pool Name> <Starting IP Address> <Number of Addresses> <Port> <CIDR Netmask>'
+
+Actions:
+
+-a
+   Add. Tells the program you are adding members to the pool
+
+-d
+   Delete. Tells the program you are deleting members from the pool
+
+Options:
+
+Pool Name
+   This tells the program what the name of the pool you are changing is named. Currently this version assumes the
+   Common partition. If you are removing members, this is the only option needed.
+
+Starting IP Address
+   This option is the dotted quad of the first IP address you are putting in the pool. Currently the program does not
+   support IPv6 addresses.
+
+Number of Addresses
+   This option tells the program the number of contiguous addresses to add.
+
+Port
+   This option tells the program what TCP/UDP port the member is listening on. All members have to have the same port.
+
+CIDR Netmask
+   This tells the program the number of addresses in the subnet of the servers. This is used to validate IP addresses.
+
+Versions:
+
+0.1a - Initial release. Missing some key features, such as deletion.
+
+0.1b - Added deletion and better argument handling
+
